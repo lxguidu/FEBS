@@ -1,0 +1,82 @@
+<div class="modal fade" id="job-add" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left" id="job-add-modal-title">新增任务</h3>
+            </div>
+            <div class="modal-body">
+                <form id="job-add-form">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               Bean名称：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="beanName" class="form-control">
+                                    <input type="text" name="jobId" hidden class="form-control">
+                                    <input type="text" name="status" hidden class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	方法名称：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="methodName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	方法参数：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="params" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	cron表达式：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="cronExpression" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	备注：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="remark" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-save" id="job-add-button" name="save">保存</button>
+                <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/job/job/jobAdd.js}"></script>
+<script data-th-src="@{js/app/job/job/jobEdit.js}"></script>

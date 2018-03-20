@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.system.dao.LogMapper">
+  <resultMap id="BaseResultMap" type="cc.mrbird.system.domain.SysLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="OPERATION" jdbcType="VARCHAR" property="operation" />
+    <result column="TIME" jdbcType="DECIMAL" property="time" />
+    <result column="METHOD" jdbcType="VARCHAR" property="method" />
+    <result column="PARAMS" jdbcType="VARCHAR" property="params" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

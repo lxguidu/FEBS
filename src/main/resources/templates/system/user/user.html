@@ -1,0 +1,70 @@
+<div class="card">
+    <div data-th-include="system/user/userAdd"></div>
+    <div class="card-block">
+        <div class="table-responsive">
+            <div id="data-table_wrapper" class="dataTables_wrapper">
+                <div class="dataTables_buttons hidden-sm-down actions">
+                    <span class="actions__item zmdi zmdi-search" onclick="search()" title="搜索" /> <span class="actions__item zmdi zmdi-refresh-alt" onclick="refresh()" title="刷新" />
+                    <div class="dropdown actions__item">
+                        <i data-toggle="dropdown" class="zmdi zmdi-download"> </i>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="excel" onclick="exportUserExcel()">
+							Excel (.xlsx) </a>
+                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="csv" onclick="exportUserCsv()"> CSV
+							(.csv) </a>
+                        </ul>
+                    </div>
+                    <div class="dropdown actions__item" shiro:hasAnyPermissions="user:add,user:delete,user:update">
+                        <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#user-add" shiro:hasPermission="user:add">新增用户</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="updateUser()" shiro:hasPermission="user:update">修改用户</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="deleteUsers()" shiro:hasPermission="user:delete">删除用户</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="data-table_filter" class="dataTables_filter">
+                    <form class="user-table-form">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 用户名： </span>
+                                    <div class="form-group">
+                                        <input type="text" name="username" class="form-control"> <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 性别： </span>
+                                    <div class="form-group">
+                                        <select class="form-control" name="ssex">
+                                            <option value="" selected>所有</option>
+                                            <option value="0">男</option>
+                                            <option value="1">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 状态： </span>
+                                    <div class="form-group">
+                                        <select class="form-control" name="status">
+                                            <option value="" selected>所有</option>
+                                            <option value="0">锁定</option>
+                                            <option value="1">有效</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table id="userTable" data-mobile-responsive="true" class="mb-bootstrap-table text-nowrap"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/system/user/user.js}"></script>
+<script data-th-src="@{js/app/system/user/userEdit.js}"></script>

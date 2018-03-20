@@ -1,0 +1,11 @@
+<style>
+.movie-img { background-size: cover; background-repeat: no-repeat; background-clip: padding-box; list-style: none; }
+.aspectration { position: relative; height: 0; width: 100%; }
+.aspectration[data-ratio="16:9"] { padding-top: 145%; }
+.col-xl-3 { flex: 0 0 25%; max-width: 20% !important; }
+.movie-action a:hover { background-color: rgba(255, 255, 255, 0.2) }
+</style>
+<div data-th-include="web/movie/movieDetail"></div>
+<div data-th-include="web/movie/movieComments"></div>
+<div class="row groups movie-list"></div>
+<script data-th-src="@{js/app/web/movie/coming.js}"></script>

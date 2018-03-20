@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.system.dao.DeptMapper">
+  <resultMap id="deptMap" type="cc.mrbird.system.domain.Dept">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="DEPT_ID" jdbcType="DECIMAL" property="deptId" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName" />
+    <result column="ORDER_NUM" jdbcType="DECIMAL" property="orderNum" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  
+  <update id="changeToTop" parameterType="java.util.List">
+  	update t_dept set parent_id = 0 where dept_id in
+  	(select dept_id from t_dept where parent_id in 
+  	<foreach collection="list" item="deptId" index="index" open="(" close=")" separator=",">
+  		#{deptId}
+  	</foreach>
+  	)
+  </update>
+</mapper>

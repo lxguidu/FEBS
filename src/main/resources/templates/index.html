@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FEBS权限管理系统</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
+    <!-- Vendor styles -->
+    <link rel="stylesheet" data-th-href="@{css/material-design-iconic-font/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" data-th-href="@{css/jquery.scrollbar/jquery.scrollbar.css}">
+    <!-- App styles -->
+    <link rel="stylesheet" data-th-href="@{css/app.css}">
+    <!-- Bootstrap Table -->
+    <link rel="stylesheet" data-th-href="@{css/bootstrap-table/bootstrap-table.css}">
+    <!-- animate -->
+    <link rel="stylesheet" data-th-href="@{css/animate/animate.min.css}">
+    <!-- multiple-select -->
+    <link rel="stylesheet" data-th-href="@{css/multiple-select/multiple-select.css}">
+    <!-- jsTree -->
+    <link rel="stylesheet" data-th-href="@{css/jsTree/style.min.css}">
+    <!-- treeTable -->
+    <link rel="stylesheet" data-th-href="@{css/jqTreeGrid/jquery.treegrid.css}">
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" data-th-href="@{css/sweetalert2/sweetalert2.css}">
+</head>
+<body data-ma-theme="green">
+    <div data-th-include="common/common"></div>
+    <main class="main">
+        <div data-th-include="common/header"></div>
+        <div data-th-include="common/aside"></div>
+        <div data-th-include="common/main"></div>
+    </main>
+    <div data-th-include="system/user/updatePassword"></div>
+</body>
+<script data-th-inline="javascript">
+	var ctx = [[@{/}]];
+	var userName = [[${user.username}]];
+	var theme = [[${user.theme}]];
+	var avatar = ctx + "img/avatar/" + [[${user.avatar}]];
+</script>
+<script data-th-src="@{js/app/index.js}"></script>
+</html>

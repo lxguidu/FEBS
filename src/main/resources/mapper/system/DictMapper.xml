@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.system.dao.DictMapper">
+  <resultMap id="BaseResultMap" type="cc.mrbird.system.domain.Dict">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="DICT_ID" jdbcType="DECIMAL" property="dictId" />
+    <result column="KEY" jdbcType="DECIMAL" property="key" />
+    <result column="VALUE" jdbcType="VARCHAR" property="value" />
+    <result column="FIELD_NAME" jdbcType="VARCHAR" property="fieldName" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+  </resultMap>
+</mapper>

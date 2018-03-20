@@ -1,0 +1,181 @@
+<style>
+.default_avatars_list {
+    display: inline-block;
+}
+
+.default_avatars_list img {
+    width: 12.3%;
+    display: inline;
+    margin: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+</style>
+<div class="card profile" style="padding: 1.2rem">
+    <div class="profile__img">
+        <img alt="">
+        <a href="javascript:void(0)" class="zmdi zmdi-edit profile__img__edit" title="更换头像"></a>
+    </div>
+    <div class="actions" style="margin-right: 1rem">
+        <a href="javascript:void(0)" onclick="editUserProfile()" style="color: #707070 !important">编辑资料</a>
+    </div>
+    <div class="profile__info">
+        <ul class="icon-list">
+            <li><i class="zmdi zmdi-account"></i> [[${user.username}]] -- [[${user.roleName}]]</li>
+            <li><i class="zmdi zmdi-male-female"></i> [[${user.ssex}]]</li>
+            <li><i class="zmdi zmdi-card-travel"></i> [[${#strings.defaultString(user.deptName,'无部门信息')}]]</li>
+            <li><i class="zmdi zmdi-phone"></i> [[${#strings.defaultString(user.mobile,'无电话信息')}]]</li>
+            <li id="profile__info_email"><i class="zmdi zmdi-email"></i><span> [[${#strings.defaultString(user.email,'无邮箱信息')}]]</span></li>
+            <li><i class="zmdi zmdi-comment-text"></i> <span>[[${#strings.defaultString(user.description,'暂无个人介绍')}]]</span></li>
+        </ul>
+    </div>
+</div>
+<div class="modal fade" id="update-profile" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left">个人信息</h3>
+            </div>
+            <div class="modal-body">
+                <form id="update-profile-form">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                  	  用户名：
+                                </span>
+                                <div class="form-group">
+                                    <input type="text" name="username" class="form-control">
+                                    <input type="text" hidden name="oldusername" class="form-control">
+                                    <input type="text" hidden name="userId" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group" style="margin-top:10px;">
+                                <span class="input-group-addon">
+                                    	性别：
+                                 </span>
+                                <div class="form-group">
+                                    <label class="custom-control custom-radio">
+                                        <input name="ssex" type="radio" value="0" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">男</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input name="ssex" type="radio" value="1" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">女</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input name="ssex" type="radio" value="2" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">保密</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                	     电话：
+                                </span>
+                                <div class="form-group">
+                                    <input type="text" name="mobile" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                	     邮箱：
+                                </span>
+                                <div class="form-group">
+                                    <input type="text" name="email" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon" style="justify-content: flex-start;margin-top: .5rem;">
+                                 	   部门：
+                                 </span>
+                                <div class="form-group">
+                                    <div id="deptTree"></div>
+                                </div>
+                                <input type="hidden" name="deptId">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    	 个人描述：
+                                </span>
+                                <div class="form-group">
+                                    <input type="text" name="description" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-save">保存</button>
+                <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="default-avatars" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left">更换头像</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row default_avatars_list">
+                        <img data-th-src="@{img/avatar/a3b10296862e40edb811418d64455d00.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/default.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/595ba7b05f2e485eb50565a50cb6cc3c.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/e1a0a6e2927249ecaa6d210ef7d966df.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/5997fedcc7bd4cffbd350b40d1b5b9824.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/c7c4ee7be3eb4e73a19887dc713505145.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/1d22f3e41d284f50b2c8fc32e0788698.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/496b3ace787342f7954b7045b8b06804.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/ff698bb2d25c4d218b3256b46c706ece.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/8f5b60ef00714a399ee544d331231820.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/a43456282d684e0b9319cf332f8ac468.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/17e420c250804efe904a09a33796d5a16.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/17e420c250804efe904a09a33796d5a10.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/2dd7a2d09fa94bf8b5c52e5318868b4d9.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/87d8194bc9834e9f8f0228e9e530beb1.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/964e40b005724165b8cf772355796c8c.jpeg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/bba284ac05b041a8b8b0d1927868d5c9x.jpg}" title="点击更换！">
+                        <img data-th-src="@{img/avatar/2dd7a2d09fa94bf8b5c52e5318868b4df.jpg}" title="点击更换！">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close" id="close_update_avatar_button" data-dismiss="modal">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-inline="javascript">
+var avatar = ctx + "img/avatar/" + [[${user.avatar}]];
+var userId = [[${user.userId}]];
+</script>
+<script data-th-src="@{js/app/system/user/profile.js}"></script>

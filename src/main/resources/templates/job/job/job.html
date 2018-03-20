@@ -1,0 +1,80 @@
+<div data-th-include="job/job/jobAdd"></div>
+<div class="card">
+    <div class="card-block">
+        <div class="table-responsive">
+            <div id="data-table_wrapper" class="dataTables_wrapper">
+                <div class="dataTables_buttons hidden-sm-down actions">
+                    <span class="actions__item zmdi zmdi-search" onclick="search()" title="搜索" />
+                    <span class="actions__item zmdi zmdi-refresh-alt" onclick="refresh()" title="刷新" />
+                    <div class="dropdown actions__item">
+                        <i data-toggle="dropdown" class="zmdi zmdi-download">
+		            </i>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="excel" onclick="exportJobExcel()">
+		                    Excel (.xlsx)
+		                </a>
+                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="csv" onclick="exportJobCsv()">
+		                    CSV (.csv)
+		                </a>
+                        </ul>
+                    </div>
+                    <div class="dropdown actions__item" shiro:hasAnyPermissions="job:add,job:update,job:delete,job:pause,job:resume,job:run">
+                        <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#job-add" shiro:hasPermission="job:add">新增任务</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="updateJob()" shiro:hasPermission="job:update">修改任务</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="deleteJob()" shiro:hasPermission="job:delete">删除任务</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="runJob()" shiro:hasPermission="job:run">立即执行任务</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="pauseJob()" shiro:hasPermission="job:pause">暂停任务</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="resumeJob()" shiro:hasPermission="job:resume">恢复任务</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="data-table_filter" class="dataTables_filter">
+                    <form class="job-table-form">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+					               	Bean名称：
+					            </span>
+                                    <div class="form-group">
+                                        <input type="text" name="beanName" class="form-control">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+					               	方法名称：
+					            </span>
+                                    <div class="form-group">
+                                        <input type="text" name="methodName" class="form-control">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 状态： </span>
+                                    <div class="form-group">
+                                        <select class="form-control" name="status">
+                                            <option value="" selected>所有</option>
+                                            <option value="0">正常</option>
+                                            <option value="1">暂停</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table id="jobTable" data-mobile-responsive="true" class="mb-bootstrap-table text-nowrap"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/job/job/job.js}"></script>

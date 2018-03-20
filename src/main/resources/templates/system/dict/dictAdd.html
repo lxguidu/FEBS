@@ -1,0 +1,68 @@
+<div class="modal fade" id="dict-add" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left" id="dict-add-modal-title">新增字典</h3>
+            </div>
+            <div class="modal-body">
+                <form id="dict-add-form">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	键：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="key" class="form-control">
+                                    <input type="text" name="dictId" hidden class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	值：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="value" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	表名：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="tableName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	字段：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="fieldName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-save" id="dict-add-button" name="save">保存</button>
+                <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/system/dict/dictAdd.js}"></script>
