@@ -116,6 +116,11 @@
 
 
 ## 部署方式
+地址：
+
+码云地址： https://gitee.com/github-16661027/project 
+
+GitHub 地址： https://github.com/wuyouzhuguli/FEBS
 
 下载后以maven项目导入，建议打包成war包部署。账号mrbird，密码123456，访问地址[localhsot](localhost)。
 
