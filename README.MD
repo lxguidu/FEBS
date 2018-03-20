@@ -116,7 +116,6 @@
 
 
 ## 部署方式
-地址：
 
 码云地址： https://gitee.com/github-16661027/project 
 
